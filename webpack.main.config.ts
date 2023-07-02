@@ -12,6 +12,9 @@ export const mainConfig: Configuration = {
   module: {
     rules,
   },
+  externals: {
+    'sharp': 'commonjs sharp'
+  },
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.json'],
   },
