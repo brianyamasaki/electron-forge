@@ -1,0 +1,12 @@
+
+.button {
+  background-color: white;
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  background-color:hotpink;
+}

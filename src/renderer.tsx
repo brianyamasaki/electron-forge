@@ -26,9 +26,21 @@
  * ```
  */
 
-import './index.css';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './app/App';
+import { Channels } from './includes';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const container = document.getElementById('root') as HTMLElement;
+const root = createRoot(container);
+root.render(<App />);
+
+// calling IPC exposed from preload script
+if (window.electron) {
+  window.electron.ipcRenderer.once(Channels.ipcTest, (arg) => {
+    // eslint-disable-next-line no-console
+    console.log(arg);
+  });
+  window.electron.ipcRenderer.sendMessage(Channels.ipcTest, ['ping']);
+  
+}
